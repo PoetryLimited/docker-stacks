@@ -31,3 +31,16 @@ RUN conda config --add channels r && \
 # Apache Toree kernel
 RUN pip --no-cache-dir install toree==0.1.0.dev7
 RUN jupyter toree install --user
+
+# Install gradle
+RUN wget https://services.gradle.org/distributions/gradle-3.1-bin.zip 
+RUN apt-get install -y unzip
+RUN unzip gradle-3.1-bin.zip 
+RUN mv gradle-2.0 /opt/
+RUN rm gradle-2.0-bin.zip
+ENV GRADLE_HOME /opt/gradle-2.0
+ENV PATH $PATH:$GRADLE_HOME/bin
+
+# Add spark to path
+
+# Install Airflow
